@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://crfwykgs3j2lc"]
+
+[ext_resource type="Script" path="res://scripts/falcon.gd" id="1_0w823"]
+[ext_resource type="Texture2D" uid="uid://01a2of1rbi7e" path="res://assets/png/misc.png" id="1_h5xrn"]
+[ext_resource type="AudioStream" uid="uid://fyfffiqa8eqw" path="res://assets/sounds/death.mp3" id="3_l40d2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d70wf"]
+size = Vector2(78, 73)
+
+[node name="Falcon" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_0w823")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_d70wf")
+
+[node name="Image" type="Sprite2D" parent="."]
+texture = ExtResource("1_h5xrn")
+vframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 80, 158)
+
+[node name="DeathMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l40d2")
+
+[connection signal="finished" from="DeathMusic" to="." method="_on_death_music_finished"]

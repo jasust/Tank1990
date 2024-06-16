@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://chqdpyn05jgfc"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_nto5k"]
+[ext_resource type="FontFile" uid="uid://bfkc4p1fty8oj" path="res://assets/font/tank_font.ttf" id="2_ey1gx"]
+[ext_resource type="PackedScene" uid="uid://c4thw2vqf1g4y" path="res://scripts/menu_button.tscn" id="3_7a3ey"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nto5k")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+
+[node name="MenuText" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -379.5
+offset_bottom = 379.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MenuText"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="MenuText/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.972549, 0.0588235, 0.0705882, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ey1gx")
+theme_override_font_sizes/font_size = 160
+text = "TANKs 2024"
+
+[node name="MenuItems" type="VBoxContainer" parent="MenuText"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Play1" parent="MenuText/MenuItems" instance=ExtResource("3_7a3ey")]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Play2")
+text = "1 Player"
+
+[node name="Play2" parent="MenuText/MenuItems" instance=ExtResource("3_7a3ey")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play1")
+focus_neighbor_bottom = NodePath("../Exit")
+text = "2 Players"
+
+[node name="Options" parent="MenuText/MenuItems" instance=ExtResource("3_7a3ey")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play1")
+focus_neighbor_bottom = NodePath("../Exit")
+disabled = true
+text = "Options"
+
+[node name="Exit" parent="MenuText/MenuItems" instance=ExtResource("3_7a3ey")]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play2")
+text = "Exit"
+
+[connection signal="pressed" from="MenuText/MenuItems/Play1" to="." method="_on_play_1_pressed"]
+[connection signal="pressed" from="MenuText/MenuItems/Play2" to="." method="_on_play_2_pressed"]
+[connection signal="pressed" from="MenuText/MenuItems/Options" to="." method="_on_play_2_pressed"]
+[connection signal="pressed" from="MenuText/MenuItems/Exit" to="." method="_on_exit_pressed"]

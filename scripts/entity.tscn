@@ -1,0 +1,203 @@
+[gd_scene load_steps=12 format=3 uid="uid://dhdnclqphk50"]
+
+[ext_resource type="Script" path="res://scripts/entity.gd" id="1_l00vp"]
+[ext_resource type="PackedScene" uid="uid://cnmht52ole0g1" path="res://scripts/shoot_component.tscn" id="1_sytmp"]
+[ext_resource type="Texture2D" uid="uid://lwwl12drapj6" path="res://assets/png/animations.png" id="3_jbgjs"]
+[ext_resource type="Texture2D" uid="uid://01a2of1rbi7e" path="res://assets/png/misc.png" id="4_wh3jy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fary0"]
+size = Vector2(66, 68)
+
+[sub_resource type="Animation" id="Animation_qh4t7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spawn:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Invincibility:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Death:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Image:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_i3oic"]
+resource_name = "dead"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Death:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071, 0.142, 0.213, 0.286, 0.356, 0.428),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Image:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.11),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pesx7"]
+resource_name = "inv"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Invincibility:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_pd4tr"]
+resource_name = "spawn"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spawn:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_17v5e"]
+_data = {
+"RESET": SubResource("Animation_qh4t7"),
+"dead": SubResource("Animation_i3oic"),
+"inv": SubResource("Animation_pesx7"),
+"spawn": SubResource("Animation_pd4tr")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2xwn1"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Entity" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 63
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
+platform_floor_layers = 4294967040
+script = ExtResource("1_l00vp")
+
+[node name="Image" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fary0")
+
+[node name="ShootComponent" parent="." instance=ExtResource("1_sytmp")]
+position = Vector2(0, -29)
+totalBullets = 1
+
+[node name="Spawn" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(1, 1)
+texture = ExtResource("3_jbgjs")
+vframes = 10
+region_enabled = true
+region_rect = Rect2(-0.5, 0, 80, 800)
+
+[node name="Boat" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1)
+texture = ExtResource("4_wh3jy")
+hframes = 2
+vframes = 2
+region_enabled = true
+region_rect = Rect2(0, 240, 160, 160)
+
+[node name="Invincibility" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_wh3jy")
+vframes = 2
+region_enabled = true
+region_rect = Rect2(80, 0, 80, 160)
+
+[node name="Death" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_jbgjs")
+vframes = 7
+region_enabled = true
+region_rect = Rect2(80, 0, 160, 1080)
+
+[node name="GlobalAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_17v5e")
+}
+
+[node name="DeathMusic" type="AudioStreamPlayer2D" parent="."]
+volume_db = -4.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_2xwn1")
+
+[connection signal="animation_finished" from="GlobalAnimations" to="." method="_on_global_animations_animation_finished"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqieyq6wygsql"]
+
+[ext_resource type="Script" path="res://scripts/objects/spawn_point.gd" id="1_wrogp"]
+
+[node name="EnemySpawn" type="Marker2D"]
+script = ExtResource("1_wrogp")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

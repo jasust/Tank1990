@@ -1,0 +1,194 @@
+[gd_scene load_steps=16 format=3 uid="uid://2jds8fwqbqrc"]
+
+[ext_resource type="PackedScene" uid="uid://dhdnclqphk50" path="res://scripts/objects/entity.tscn" id="1_0dy50"]
+[ext_resource type="Script" path="res://scripts/objects/player.gd" id="2_7ir76"]
+[ext_resource type="Texture2D" uid="uid://dqu0mqr1kf707" path="res://assets/png/player1.png" id="3_g1vls"]
+[ext_resource type="PackedScene" uid="uid://dv7ex7jglkvsl" path="res://scripts/objects/slippery_component.tscn" id="4_8iluw"]
+[ext_resource type="AudioStream" uid="uid://d37h604l053gd" path="res://assets/sounds/hurt.mp3" id="5_2c2d0"]
+
+[sub_resource type="Animation" id="Animation_nr8b3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_vi0lw"]
+resource_name = "walk_0_0"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ocfob"]
+resource_name = "walk_0_1"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 6]
+}
+
+[sub_resource type="Animation" id="Animation_jxvrp"]
+resource_name = "walk_0_2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [8, 10]
+}
+
+[sub_resource type="Animation" id="Animation_7aoto"]
+resource_name = "walk_0_3"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 14]
+}
+
+[sub_resource type="Animation" id="Animation_4nlw3"]
+resource_name = "walk_1_0"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 3]
+}
+
+[sub_resource type="Animation" id="Animation_irdpb"]
+resource_name = "walk_1_1"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 7]
+}
+
+[sub_resource type="Animation" id="Animation_letx0"]
+resource_name = "walk_1_2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 11]
+}
+
+[sub_resource type="Animation" id="Animation_ey7dh"]
+resource_name = "walk_1_3"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0hgg"]
+_data = {
+"RESET": SubResource("Animation_nr8b3"),
+"walk_0_0": SubResource("Animation_vi0lw"),
+"walk_0_1": SubResource("Animation_ocfob"),
+"walk_0_2": SubResource("Animation_jxvrp"),
+"walk_0_3": SubResource("Animation_7aoto"),
+"walk_1_0": SubResource("Animation_4nlw3"),
+"walk_1_1": SubResource("Animation_irdpb"),
+"walk_1_2": SubResource("Animation_letx0"),
+"walk_1_3": SubResource("Animation_ey7dh")
+}
+
+[node name="Player" instance=ExtResource("1_0dy50")]
+script = ExtResource("2_7ir76")
+
+[node name="Image" parent="." index="0"]
+texture = ExtResource("3_g1vls")
+hframes = 2
+vframes = 8
+region_enabled = true
+region_rect = Rect2(0.5, 0, 160, 640)
+
+[node name="SlipperyComponent" parent="." index="3" instance=ExtResource("4_8iluw")]
+
+[node name="Boat" parent="." index="5"]
+vframes = 1
+region_rect = Rect2(0, 240, 160, 80)
+
+[node name="Timer" type="Timer" parent="Invincibility" index="0"]
+wait_time = 2.5
+
+[node name="PlayerAnimations" type="AnimationPlayer" parent="." index="8"]
+root_node = NodePath("../Image")
+libraries = {
+"": SubResource("AnimationLibrary_i0hgg")
+}
+
+[node name="DeathMusic" parent="." index="10"]
+stream = ExtResource("5_2c2d0")
+volume_db = -5.0
+
+[connection signal="timeout" from="Invincibility/Timer" to="." method="_on_timer_timeout"]

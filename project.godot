@@ -14,12 +14,10 @@ config/name="Tanks2024"
 config/name_localized={
 "sh": "Tenkići2024"
 }
-config/version="1.05"
-run/main_scene="res://scripts/cutscene.tscn"
+config/version="1.06"
+run/main_scene="res://scripts/menu/cutscene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-boot_splash/bg_color=Color(0.117647, 0.117647, 0.117647, 1)
-boot_splash/image="res://logo_loading.png"
-boot_splash/fullsize=false
+boot_splash/image="res://assets/logo/logo_loading.png"
 config/icon="res://assets/png/home_button.png"
 
 [autoload]

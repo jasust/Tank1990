@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfs8fqufbuyu0"]
+
+[ext_resource type="FontFile" uid="uid://bp8oldnrwoi1x" path="res://assets/font/prstartk.ttf" id="1_gjsu1"]
+[ext_resource type="Script" path="res://scripts/objects/points.gd" id="1_jv4n8"]
+
+[node name="Points" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jv4n8")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -38.0
+offset_top = -13.0
+offset_right = 40.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_gjsu1")
+theme_override_font_sizes/font_size = 26
+text = "500"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

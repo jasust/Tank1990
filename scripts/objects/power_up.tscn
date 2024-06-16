@@ -1,0 +1,200 @@
+[gd_scene load_steps=15 format=3 uid="uid://bpn583rv8kgha"]
+
+[ext_resource type="Script" path="res://scripts/objects/power_up.gd" id="1_jgpet"]
+[ext_resource type="Texture2D" uid="uid://d3uthkungeil7" path="res://assets/png/powerups.png" id="2_ygmie"]
+[ext_resource type="AudioStream" uid="uid://crs0qunvbc8h" path="res://assets/sounds/enter.mp3" id="3_l7gmb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lce4"]
+size = Vector2(79, 75)
+
+[sub_resource type="Animation" id="Animation_hsj38"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_dkhhb"]
+resource_name = "boat"
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_y8c55"]
+resource_name = "bomb"
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 8]
+}
+
+[sub_resource type="Animation" id="Animation_bflw2"]
+resource_name = "clock"
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 8]
+}
+
+[sub_resource type="Animation" id="Animation_ggemi"]
+resource_name = "gun"
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 8]
+}
+
+[sub_resource type="Animation" id="Animation_be7uv"]
+resource_name = "helmet"
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 8]
+}
+
+[sub_resource type="Animation" id="Animation_xk41e"]
+resource_name = "shovel"
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 8]
+}
+
+[sub_resource type="Animation" id="Animation_8yxm3"]
+resource_name = "star"
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 8]
+}
+
+[sub_resource type="Animation" id="Animation_80a4x"]
+resource_name = "tank"
+loop_mode = 1
+step = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bdki6"]
+_data = {
+"RESET": SubResource("Animation_hsj38"),
+"boat": SubResource("Animation_dkhhb"),
+"bomb": SubResource("Animation_y8c55"),
+"clock": SubResource("Animation_bflw2"),
+"gun": SubResource("Animation_ggemi"),
+"helmet": SubResource("Animation_be7uv"),
+"shovel": SubResource("Animation_xk41e"),
+"star": SubResource("Animation_8yxm3"),
+"tank": SubResource("Animation_80a4x")
+}
+
+[node name="PowerUp" type="Area2D"]
+z_index = 4
+collision_layer = 16
+script = ExtResource("1_jgpet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_2lce4")
+
+[node name="Image" type="Sprite2D" parent="."]
+texture = ExtResource("2_ygmie")
+vframes = 9
+frame = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 80, 720)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Image"]
+libraries = {
+"": SubResource("AnimationLibrary_bdki6")
+}
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_l7gmb")
+volume_db = -4.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="PickupSound" to="." method="_on_audio_stream_player_2d_finished"]

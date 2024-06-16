@@ -1,0 +1,408 @@
+[gd_scene load_steps=27 format=3 uid="uid://b0h13uj0jpwb7"]
+
+[ext_resource type="PackedScene" uid="uid://dhdnclqphk50" path="res://scripts/objects/entity.tscn" id="1_6lwx2"]
+[ext_resource type="Script" path="res://scripts/objects/enemy.gd" id="2_hd6x5"]
+[ext_resource type="Texture2D" uid="uid://bqpdgh17li7jl" path="res://assets/png/enemies.png" id="3_1ahyo"]
+[ext_resource type="AudioStream" uid="uid://c4wyuewve6mhq" path="res://assets/sounds/explode.mp3" id="4_6p2rb"]
+
+[sub_resource type="Animation" id="Animation_fxpod"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_khwhr"]
+resource_name = "walk_0"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 5, 4, 9]
+}
+
+[sub_resource type="Animation" id="Animation_1q2ka"]
+resource_name = "walk_0_0"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 5]
+}
+
+[sub_resource type="Animation" id="Animation_lxv7q"]
+resource_name = "walk_0_1"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 6]
+}
+
+[sub_resource type="Animation" id="Animation_ywppf"]
+resource_name = "walk_0_2"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 7]
+}
+
+[sub_resource type="Animation" id="Animation_6m6va"]
+resource_name = "walk_0_3"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 8]
+}
+
+[sub_resource type="Animation" id="Animation_pjisy"]
+resource_name = "walk_1"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [10, 15, 14, 19]
+}
+
+[sub_resource type="Animation" id="Animation_aq45f"]
+resource_name = "walk_1_0"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [10, 15]
+}
+
+[sub_resource type="Animation" id="Animation_x6ofs"]
+resource_name = "walk_1_1"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [11, 16]
+}
+
+[sub_resource type="Animation" id="Animation_lmlnh"]
+resource_name = "walk_1_2"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 17]
+}
+
+[sub_resource type="Animation" id="Animation_jfan4"]
+resource_name = "walk_1_3"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 18]
+}
+
+[sub_resource type="Animation" id="Animation_x6flc"]
+resource_name = "walk_2"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 25, 24, 29]
+}
+
+[sub_resource type="Animation" id="Animation_5bebe"]
+resource_name = "walk_2_0"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20, 25]
+}
+
+[sub_resource type="Animation" id="Animation_4c3ld"]
+resource_name = "walk_2_1"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [21, 26]
+}
+
+[sub_resource type="Animation" id="Animation_i863i"]
+resource_name = "walk_2_2"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [22, 27]
+}
+
+[sub_resource type="Animation" id="Animation_dfcfr"]
+resource_name = "walk_2_3"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [23, 28]
+}
+
+[sub_resource type="Animation" id="Animation_ex820"]
+resource_name = "walk_3"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [30, 35, 34, 39]
+}
+
+[sub_resource type="Animation" id="Animation_pvf3d"]
+resource_name = "walk_3_0"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [30, 35]
+}
+
+[sub_resource type="Animation" id="Animation_aj12m"]
+resource_name = "walk_3_1"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [31, 36]
+}
+
+[sub_resource type="Animation" id="Animation_sb1vv"]
+resource_name = "walk_3_2"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [32, 37]
+}
+
+[sub_resource type="Animation" id="Animation_e0shc"]
+resource_name = "walk_3_3"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Image:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [33, 38]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_seqop"]
+_data = {
+"RESET": SubResource("Animation_fxpod"),
+"walk_0": SubResource("Animation_khwhr"),
+"walk_0_0": SubResource("Animation_1q2ka"),
+"walk_0_1": SubResource("Animation_lxv7q"),
+"walk_0_2": SubResource("Animation_ywppf"),
+"walk_0_3": SubResource("Animation_6m6va"),
+"walk_1": SubResource("Animation_pjisy"),
+"walk_1_0": SubResource("Animation_aq45f"),
+"walk_1_1": SubResource("Animation_x6ofs"),
+"walk_1_2": SubResource("Animation_lmlnh"),
+"walk_1_3": SubResource("Animation_jfan4"),
+"walk_2": SubResource("Animation_x6flc"),
+"walk_2_0": SubResource("Animation_5bebe"),
+"walk_2_1": SubResource("Animation_4c3ld"),
+"walk_2_2": SubResource("Animation_i863i"),
+"walk_2_3": SubResource("Animation_dfcfr"),
+"walk_3": SubResource("Animation_ex820"),
+"walk_3_0": SubResource("Animation_pvf3d"),
+"walk_3_1": SubResource("Animation_aj12m"),
+"walk_3_2": SubResource("Animation_sb1vv"),
+"walk_3_3": SubResource("Animation_e0shc")
+}
+
+[node name="Enemy" instance=ExtResource("1_6lwx2")]
+script = ExtResource("2_hd6x5")
+
+[node name="Image" parent="." index="0"]
+texture = ExtResource("3_1ahyo")
+hframes = 5
+vframes = 8
+
+[node name="Boat" parent="." index="4"]
+hframes = 1
+vframes = 1
+region_rect = Rect2(80, 320, 80, 80)
+
+[node name="EnemyAnimations" type="AnimationPlayer" parent="." index="7"]
+libraries = {
+"": SubResource("AnimationLibrary_seqop")
+}
+
+[node name="DeathMusic" parent="." index="9"]
+stream = ExtResource("4_6p2rb")
+volume_db = -8.0
